@@ -1,0 +1,77 @@
+package watersplash;
+
+import java.awt.Color;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
+import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.client.shader.Framebuffer;
+import net.minecraft.init.Blocks;
+import net.minecraft.util.IIcon;
+
+public class TextureRegister {
+	
+	public static int getColorForBlock(Block bl) {
+		
+		TextureAtlasSprite sprite = Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(bl.getBlockTextureFromSide(0).getIconName());
+		int width = sprite.getIconWidth();
+		int height = sprite.getIconHeight();
+		int[][] arr = sprite.getFrameTextureData(0);
+		int xLenght = arr.length;
+		int yLength = arr[0].length;
+		BufferedImage b = new BufferedImage(width, height, 3);
+
+		System.out.println("try "+width+"try1 "+height+"try2 "+xLenght+"try3 "+yLength+"try4 "+arr+"try5 "+sprite);
+		System.out.println("try "+width+"try1 "+height+"try2 "+xLenght+"try3 "+yLength+"try4 "+arr+"try5 "+sprite);
+		System.out.println("try "+width+"try1 "+height+"try2 "+xLenght+"try3 "+yLength+"try4 "+arr+"try5 "+sprite);
+		System.out.println("try "+width+"try1 "+height+"try2 "+xLenght+"try3 "+yLength+"try4 "+arr+"try5 "+sprite);
+		System.out.println("try "+width+"try1 "+height+"try2 "+xLenght+"try3 "+yLength+"try4 "+arr+"try5 "+sprite);
+		System.out.println("try "+width+"try1 "+height+"try2 "+xLenght+"try3 "+yLength+"try4 "+arr+"try5 "+sprite);
+		System.out.println("try "+width+"try1 "+height+"try2 "+xLenght+"try3 "+yLength+"try4 "+arr+"try5 "+sprite);
+		System.out.println("try "+width+"try1 "+height+"try2 "+xLenght+"try3 "+yLength+"try4 "+arr+"try5 "+sprite);
+		System.out.println("try "+width+"try1 "+height+"try2 "+xLenght+"try3 "+yLength+"try4 "+arr+"try5 "+sprite);
+		System.out.println("try "+width+"try1 "+height+"try2 "+xLenght+"try3 "+yLength+"try4 "+arr+"try5 "+sprite);
+		System.out.println("try "+width+"try1 "+height+"try2 "+xLenght+"try3 "+yLength+"try4 "+arr+"try5 "+sprite);
+		System.out.println("try "+width+"try1 "+height+"try2 "+xLenght+"try3 "+yLength+"try4 "+arr+"try5 "+sprite);
+		System.out.println("try "+width+"try1 "+height+"try2 "+xLenght+"try3 "+yLength+"try4 "+arr+"try5 "+sprite);
+		System.out.println("try "+width+"try1 "+height+"try2 "+xLenght+"try3 "+yLength+"try4 "+arr+"try5 "+sprite);
+		System.out.println("try "+width+"try1 "+height+"try2 "+xLenght+"try3 "+yLength+"try4 "+arr+"try5 "+sprite);
+		System.out.println("try "+width+"try1 "+height+"try2 "+xLenght+"try3 "+yLength+"try4 "+arr+"try5 "+sprite);
+		System.out.println("try "+width+"try1 "+height+"try2 "+xLenght+"try3 "+yLength+"try4 "+arr+"try5 "+sprite);
+		System.out.println("try "+width+"try1 "+height+"try2 "+xLenght+"try3 "+yLength+"try4 "+arr+"try5 "+sprite);
+		System.out.println("try "+width+"try1 "+height+"try2 "+xLenght+"try3 "+yLength+"try4 "+arr+"try5 "+sprite);
+		System.out.println("try "+width+"try1 "+height+"try2 "+xLenght+"try3 "+yLength+"try4 "+arr+"try5 "+sprite);
+		
+		for(int x = 0; x < width; x++) {
+		    for(int y = 0; y < height; y++) {
+		    	
+		    	
+		    	
+		        int rgb = (int)arr[x][y]<<16 | (int)arr[x][y] << 8 | (int)arr[x][y];
+		        b.setRGB(x, y, rgb);
+		    }
+		}
+		
+		try {
+			ImageIO.write(b, "Doublearray", new File("Doublearray.jpg"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println("end");
+		System.out.println("img "+sprite.getFrameTextureData(1)+"  hello");
+		
+		IIcon icocn = Blocks.lava.getIcon(0, 0);
+		if(b!= null) {
+			Color c = new Color(((BufferedImage) b).getRGB((int)icocn.getMinU(), (int)icocn.getMaxU()));
+			System.out.println("color "+c);
+		}
+		return 0;
+	}
+}

@@ -1,0 +1,106 @@
+package watersplash;
+
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.world.World;
+import net.minecraftforge.common.IExtendedEntityProperties;
+import watersplash.particles.ParticleEffects;
+
+public class EntityRainProperties implements IExtendedEntityProperties {
+	  public static final String RAIN_PROP = "KorinRain";
+	  
+	  public final Entity entity;
+
+	private boolean trigger = true;
+
+	private int time;
+
+	  
+	  
+	  public EntityRainProperties(Entity entityp) {
+	    this.entity = entityp;
+	  }
+	  
+	  public static final void register(Entity entity) {
+	    entity.registerExtendedProperties(RAIN_PROP, new EntityRainProperties(entity));
+	  }
+	  
+	  public static final EntityRainProperties get(Entity entity) {
+	    return (EntityRainProperties)entity.getExtendedProperties(RAIN_PROP);
+	  }
+
+	@Override
+	public void saveNBTData(NBTTagCompound compound) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void loadNBTData(NBTTagCompound compound) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void init(Entity entity, World world) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void updateWaterLogic() {
+
+		
+        if(entity != null && entity.worldObj != null) {
+        	int y = (int) entity.posY;
+        	
+			if(entity instanceof EntityPlayer)
+				y -= 1;
+
+        	boolean r = entity.isRiding();
+        	
+            Block b = this.entity.worldObj.getBlock((int)entity.posX, y, (int)entity.posZ);
+        if(b != null)
+        	if(!trigger) {
+        	
+        	if(r) {
+
+				ParticleEffects.spawnTail(entity,true);
+        		trigger = true;
+        	}
+        		
+        	if(b.getMaterial() == Material.water && !r) {
+        		trigger = true;
+        		ParticleEffects.spawnEntityParticle("ParticleSplash",entity,entity.worldObj.getBiomeGenForCoords((int)entity.posX, (int)entity.posZ),"Water");
+        	}
+        	if(b.getMaterial() == Material.lava) {
+                trigger = true;
+                ParticleEffects.spawnEntityParticle("ParticleSplash",entity,entity.worldObj.getBiomeGenForCoords((int)entity.posX, (int)entity.posZ),"Lava");
+        	}
+        	
+        	}else {
+        		int u = 1;
+        		if(r)
+        			u=2;
+                Block bu = this.entity.worldObj.getBlock((int)entity.posX-u, (int)entity.posY, (int)entity.posZ);
+                if(bu != null)
+        		if(entity.worldObj.isAirBlock((int)entity.posX, (int)entity.posY, (int)entity.posZ) && !(b.getMaterial() == Material.water||b.getMaterial() == Material.lava))
+                if(ConfigurationMoD.SPLASH_LOWPERFORMANCEMOD || updateTime())
+                trigger = false;
+        		System.out.println("reset "+u+entity);
+            }
+        }
+    }
+
+	private boolean updateTime() {
+		if(++time >= 20) {
+			time = 0;
+			return true;
+			
+		}else {
+			return false;
+			}
+		}
+	}

@@ -1,0 +1,69 @@
+package watersplash.particles;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.particle.EntityFX;
+import net.minecraft.entity.Entity;
+import net.minecraft.world.World;
+import net.minecraft.world.biome.BiomeGenBase;
+
+public class ParticleEffects
+{
+	 private static Minecraft mc = Minecraft.getMinecraft();
+	 private static World theWorld = mc.theWorld;
+	
+
+	 public static void spawnEntityParticle(String particleName, Entity entity, BiomeGenBase biomeGenBase,String Type) {
+
+		 if (mc != null)
+		 {
+		 EntityFX var21 = null;
+
+		 if (particleName.equals("ParticleWaterSplash"))
+		 {
+			 boolean i = true;
+			 int o = 0;
+			 int x =(int)entity.posX;
+			 int y =(int)entity.posY;
+			 int z =(int)entity.posZ;
+			 while(i) {
+				 ++o;
+				 if(entity.worldObj.isAirBlock(x,y+o,z) || o > 5) {
+
+			   		 if (Type.equals("Water")) {
+			   			 System.out.println("spawn water at"+x+" "+(y+o)+" "+z);
+						var21 = new ParticleWaterSplash(theWorld, x, y+o+2,z,entity,biomeGenBase);
+					 	mc.effectRenderer.addEffect(var21);
+					 	 }
+
+			   		 if (Type.equals("Lava")){
+						var21 = new ParticleLavaSplash(theWorld, x, y+o,z,entity,biomeGenBase); 
+			   			mc.effectRenderer.addEffect(var21);
+						 }
+					 	i=false;
+				 		
+				 			}	
+				 
+
+			 			}
+			 		}				 
+		 		}
+		}
+
+		 
+	 public static EntityFX spawnParticle(String particleName, double par2, double par4, double par6, double par8, double par10, double par12){
+	 if (mc != null)
+	 {
+		 
+	 EntityFX var21 = null;
+	 
+	 	if (particleName.equals("ParticleWaterRipple"))
+		 	{
+			 var21 = new ParticleWaterRipple(theWorld, par2, par4, par6, (float)par8, (float)par10, (float)par12);
+			 mc.effectRenderer.addEffect(var21);
+		 	} 
+	 	
+	 
+	 	}
+	 return null;
+	 }
+}

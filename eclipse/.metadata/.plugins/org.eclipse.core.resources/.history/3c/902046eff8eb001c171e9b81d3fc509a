@@ -1,0 +1,59 @@
+package watersplash;
+
+import java.awt.Color;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
+import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.client.shader.Framebuffer;
+import net.minecraft.init.Blocks;
+import net.minecraft.util.IIcon;
+
+public class TextureRegister {
+	
+	public static Color getColorForBlock(Block bl,int side, int meta) {
+		if(bl.getIcon(side, meta) != null) {
+		TextureAtlasSprite sprite = Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(bl.getIcon(side, meta).getIconName());
+		int width = sprite.getIconWidth();
+		int height = sprite.getIconHeight();
+		int[][] arr = sprite.getFrameTextureData(0);
+		int xLenght = arr[0].length/2;
+		int yLength = arr[0].length/2;
+		BufferedImage b = new BufferedImage(width, height, 3);
+
+		System.out.println("red "+sprite.getFrameCount()+" "+sprite.getFrameTextureData(0)[0].length);
+		for(int x = 0; x < 16; x++) {
+		    for(int y = 0; y < 16; y++) {
+		    	
+		    	
+		    	
+		        int rgb = (int)arr[0][y+x]<<16 | (int)arr[0][y+x] << 8 | (int)arr[0][y+x];
+		        b.setRGB(x, y, rgb);
+		    }
+		}
+		
+		File outputfile = new File("LiquidSplash.png");
+		try {
+			ImageIO.write(b, "png", outputfile);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Color c = null;
+		IIcon icocn = bl.getIcon(side, meta);
+		if(b != null) {
+			c = new Color(((BufferedImage) b).getRGB((int)icocn.getMinU(), (int)icocn.getMaxU()));
+		}
+		return c;
+	}else {
+		return null;
+		}
+	}
+}

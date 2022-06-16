@@ -1,0 +1,16 @@
+package watersplash;
+
+import cpw.mods.fml.common.FMLCommonHandler;
+import net.minecraftforge.common.MinecraftForge;
+
+public class BasisCommonProxy {
+
+	public void registerEvents() {
+
+		EntityRainEvents RainEvents = new EntityRainEvents();
+        MinecraftForge.EVENT_BUS.register(RainEvents);
+		FMLCommonHandler.instance().bus().register(RainEvents);
+		
+	}
+	
+}

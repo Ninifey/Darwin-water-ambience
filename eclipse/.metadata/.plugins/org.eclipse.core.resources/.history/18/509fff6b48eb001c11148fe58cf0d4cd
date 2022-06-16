@@ -1,0 +1,7 @@
+package watersplash;
+
+public class BasisClientProxy extends BasisCommonProxy{
+
+
+}
+

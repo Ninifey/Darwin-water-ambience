@@ -1,0 +1,88 @@
+package watersplash;
+
+import conception.location.ConEventServer;
+import conception.server.FactionSystem;
+import conception.server.LocationSystem;
+import conception.util.WeatherHelper;
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.SidedProxy;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraftforge.common.MinecraftForge;
+
+@Mod(modid = WATERMAIN.MODID, version = WATERMAIN.VERSION)
+public class WATERMAIN
+{
+    public static final String MODID = "conception";
+	public static final String name = "conception | Glimmer of Hope DEBUG";
+    public static final String VERSION = "0.7 FullServerVersion";
+
+	public static WATERMAIN instance;
+	public static LocationSystem LocationSystem;
+	public static FactionSystem FactionSystem;
+	public static CreativeTabs KoRINTAB = new CreativeTabs(12,"conception")
+	{public Item getTabIconItem() {return Items.apple;}};
+	
+	public WATERMAIN() {
+		instance = this;
+	}
+	
+	@SidedProxy
+	(
+	clientSide = "conception.BasisClientProxy", 
+	serverSide = "conception.BasisCommonProxy"
+	)
+	
+	public static BasisCommonProxy proxy;
+	public static BasisClientProxy proxyclient;
+	
+	@EventHandler
+	public void preInit(FMLPreInitializationEvent preEvent){
+		proxy.RegisterRender();
+		proxy.registerNeueRender(); 
+		NewEntityRegistry.mainRegistry();
+	}
+
+    @EventHandler
+    public void init(FMLInitializationEvent event){
+    	WeatherHelper weatherevent = new WeatherHelper();
+		ConEventServer events2 = new ConEventServer();
+		FMLCommonHandler.instance().bus().register(events2);
+        MinecraftForge.EVENT_BUS.register(weatherevent);
+    	new BlockRegistry();
+	 	
+    }
+
+    
+    @EventHandler
+	public void postInit(FMLPostInitializationEvent postEvent){
+
+	    LocationSystem = new LocationSystem();
+	    FactionSystem = new FactionSystem();
+	    LocationSystem.init();
+    }
+
+
+	/**
+	 * Gets the LocationRegistry
+	 * @return
+	 */
+	public static LocationSystem getLocationRegistry() {
+		return LocationSystem;
+	}
+
+	/**
+	 * Gets the FactionSystem
+	 * @return
+	 */
+	public static FactionSystem getFactionSystem() {
+		return FactionSystem;
+	}
+}
+	

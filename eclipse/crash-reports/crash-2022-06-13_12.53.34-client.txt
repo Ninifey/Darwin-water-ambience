@@ -1,0 +1,97 @@
+---- Minecraft Crash Report ----
+// You should try our sister game, Minceraft!
+
+Time: 13.06.22 12:53
+Description: Unexpected error
+
+java.lang.NullPointerException: Unexpected error
+	at net.minecraft.entity.Entity.getBrightnessForRender(Entity.java:1214)
+	at net.minecraft.client.particle.EffectRenderer.renderParticles(EffectRenderer.java:158)
+	at net.minecraft.client.renderer.EntityRenderer.renderWorld(EntityRenderer.java:1351)
+	at net.minecraft.client.renderer.EntityRenderer.updateCameraAndRender(EntityRenderer.java:1087)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1067)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:962)
+	at net.minecraft.client.main.Main.main(Main.java:164)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(Unknown Source)
+	at GradleStart.main(Unknown Source)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at net.minecraft.entity.Entity.getBrightnessForRender(Entity.java:1214)
+	at net.minecraft.client.particle.EffectRenderer.renderParticles(EffectRenderer.java:158)
+	at net.minecraft.client.renderer.EntityRenderer.renderWorld(EntityRenderer.java:1351)
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 1 total; [EntityClientPlayerMP['Player871'/182, l='MpServer', x=13,39, y=5,62, z=-618,22]]
+	Chunk stats: MultiplayerChunkCache: 10, 10
+	Level seed: 0
+	Level generator: ID 01 - flat, ver 0. Features enabled: false
+	Level generator options: 
+	Level spawn location: World: (4,4,-607), Chunk: (at 4,0,1 in 0,-38; contains blocks 0,0,-608 to 15,255,-593), Region: (0,-2; contains chunks 0,-64 to 31,-33, blocks 0,0,-1024 to 511,255,-513)
+	Level time: 2735 game time, 2735 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: false
+	Forced entities: 16 total; [EntityPig['Pig'/128, l='MpServer', x=47,50, y=4,00, z=-627,38], EntityPig['Pig'/129, l='MpServer', x=46,66, y=4,00, z=-626,16], EntityChicken['Chicken'/130, l='MpServer', x=47,50, y=4,00, z=-633,50], EntityChicken['Chicken'/131, l='MpServer', x=44,50, y=4,00, z=-631,50], EntityChicken['Chicken'/132, l='MpServer', x=44,44, y=4,00, z=-625,56], EntityItem['item.tile.sponge'/104, l='MpServer', x=11,50, y=3,13, z=-619,75], EntityItem['item.item.leggingsGold'/105, l='MpServer', x=10,91, y=3,13, z=-619,63], EntityItem['item.item.chestplateGold'/106, l='MpServer', x=10,88, y=3,13, z=-619,41], EntityItem['item.tile.sponge'/107, l='MpServer', x=10,22, y=3,13, z=-620,56], EntityItem['item.tile.sponge'/108, l='MpServer', x=11,97, y=3,13, z=-620,88], EntityItem['item.tile.sponge'/110, l='MpServer', x=10,06, y=4,13, z=-618,06], EntityItem['item.tile.sponge'/112, l='MpServer', x=11,25, y=3,63, z=-618,91], EntityChicken['Chicken'/117, l='MpServer', x=16,53, y=4,00, z=-625,47], EntityChicken['Chicken'/118, l='MpServer', x=17,53, y=4,00, z=-625,47], EntityClientPlayerMP['Player871'/182, l='MpServer', x=13,39, y=5,62, z=-618,22], EntityPig['Pig'/127, l='MpServer', x=45,09, y=4,00, z=-629,91]]
+	Retry entities: 0 total; []
+	Server brand: fml,forge
+	Server type: Integrated singleplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:415)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2566)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:991)
+	at net.minecraft.client.main.Main.main(Main.java:164)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(Unknown Source)
+	at GradleStart.main(Unknown Source)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.7.10
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_221, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 867795984 bytes (827 MB) / 1037959168 bytes (989 MB) up to 1037959168 bytes (989 MB)
+	JVM Flags: 3 total; -Xincgc -Xmx1024M -Xms1024M
+	AABB Pool Size: 0 (0 bytes; 0 MB) allocated, 0 (0 bytes; 0 MB) used
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	FML: MCP v9.05 FML v7.10.99.99 Minecraft Forge 10.13.4.1614 4 mods loaded, 4 mods active
+	States: 'U' = Unloaded 'L' = Loaded 'C' = Constructed 'H' = Pre-initialized 'I' = Initialized 'J' = Post-initialized 'A' = Available 'D' = Disabled 'E' = Errored
+	UCHIJAAAA	mcp{9.05} [Minecraft Coder Pack] (minecraft.jar) 
+	UCHIJAAAA	FML{7.10.99.99} [Forge Mod Loader] (forgeSrc-1.7.10-10.13.4.1614-1.7.10.jar) 
+	UCHIJAAAA	Forge{10.13.4.1614} [Minecraft Forge] (forgeSrc-1.7.10-10.13.4.1614-1.7.10.jar) 
+	UCHIJAAAA	watermod{1.0} [watermod] (bin) 
+	GL info: ' Vendor: 'NVIDIA Corporation' Version: '4.6.0 NVIDIA 512.15' Renderer: 'NVIDIA GeForce RTX 2080 SUPER/PCIe/SSE2'
+	Launched Version: 1.7.10
+	LWJGL: 2.9.1
+	OpenGL: NVIDIA GeForce RTX 2080 SUPER/PCIe/SSE2 GL version 4.6.0 NVIDIA 512.15, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Anisotropic filtering is supported and maximum anisotropy is 16.
+Shaders are available because OpenGL 2.1 is supported.
+
+	Is Modded: Definitely; Client brand changed to 'fml,forge'
+	Type: Client (map_client.txt)
+	Resource Packs: []
+	Current Language: English (US)
+	Profiler Position: N/A (disabled)
+	Vec3 Pool Size: 0 (0 bytes; 0 MB) allocated, 0 (0 bytes; 0 MB) used
+	Anisotropic Filtering: Off (1)

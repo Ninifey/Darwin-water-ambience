@@ -1,0 +1,139 @@
+---- Minecraft Crash Report ----
+// I bet Cylons wouldn't have this problem.
+
+Time: 16.06.22 18:44
+Description: Ticking entity
+
+java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.ArrayList.rangeCheck(ArrayList.java:657)
+	at java.util.ArrayList.get(ArrayList.java:433)
+	at net.minecraft.client.renderer.texture.TextureAtlasSprite.getFrameTextureData(TextureAtlasSprite.java:189)
+	at watersplash.TextureRegister.getColorForBlock(TextureRegister.java:32)
+	at watersplash.particles.ParticleLavaSplash.<init>(ParticleLavaSplash.java:41)
+	at watersplash.particles.ParticleEffects.spawnEntityParticle(ParticleEffects.java:41)
+	at watersplash.EntityRainProperties.updateWaterLogic(EntityRainProperties.java:74)
+	at watersplash.WeatherHelper.updateSplashParticlesForLiving(WeatherHelper.java:67)
+	at cpw.mods.fml.common.eventhandler.ASMEventHandler_6_WeatherHelper_updateSplashParticlesForLiving_LivingUpdateEvent.invoke(.dynamic)
+	at cpw.mods.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:54)
+	at cpw.mods.fml.common.eventhandler.EventBus.post(EventBus.java:140)
+	at net.minecraftforge.common.ForgeHooks.onLivingUpdate(ForgeHooks.java:289)
+	at net.minecraft.entity.EntityLivingBase.onUpdate(EntityLivingBase.java:1765)
+	at net.minecraft.entity.EntityLiving.onUpdate(EntityLiving.java:250)
+	at net.minecraft.entity.monster.EntityMob.onUpdate(EntityMob.java:47)
+	at net.minecraft.entity.monster.EntityZombie.onUpdate(EntityZombie.java:335)
+	at net.minecraft.world.World.updateEntityWithOptionalForce(World.java:2298)
+	at net.minecraft.world.World.updateEntity(World.java:2258)
+	at net.minecraft.world.World.updateEntities(World.java:2108)
+	at net.minecraft.client.Minecraft.runTick(Minecraft.java:2097)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1039)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:962)
+	at net.minecraft.client.main.Main.main(Main.java:164)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(Unknown Source)
+	at GradleStart.main(Unknown Source)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at java.util.ArrayList.rangeCheck(ArrayList.java:657)
+	at java.util.ArrayList.get(ArrayList.java:433)
+	at net.minecraft.client.renderer.texture.TextureAtlasSprite.getFrameTextureData(TextureAtlasSprite.java:189)
+	at watersplash.TextureRegister.getColorForBlock(TextureRegister.java:32)
+	at watersplash.particles.ParticleLavaSplash.<init>(ParticleLavaSplash.java:41)
+	at watersplash.particles.ParticleEffects.spawnEntityParticle(ParticleEffects.java:41)
+	at watersplash.EntityRainProperties.updateWaterLogic(EntityRainProperties.java:74)
+	at watersplash.WeatherHelper.updateSplashParticlesForLiving(WeatherHelper.java:67)
+	at cpw.mods.fml.common.eventhandler.ASMEventHandler_6_WeatherHelper_updateSplashParticlesForLiving_LivingUpdateEvent.invoke(.dynamic)
+	at cpw.mods.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:54)
+	at cpw.mods.fml.common.eventhandler.EventBus.post(EventBus.java:140)
+	at net.minecraftforge.common.ForgeHooks.onLivingUpdate(ForgeHooks.java:289)
+	at net.minecraft.entity.EntityLivingBase.onUpdate(EntityLivingBase.java:1765)
+	at net.minecraft.entity.EntityLiving.onUpdate(EntityLiving.java:250)
+	at net.minecraft.entity.monster.EntityMob.onUpdate(EntityMob.java:47)
+	at net.minecraft.entity.monster.EntityZombie.onUpdate(EntityZombie.java:335)
+	at net.minecraft.world.World.updateEntityWithOptionalForce(World.java:2298)
+	at net.minecraft.world.World.updateEntity(World.java:2258)
+
+-- Entity being ticked --
+Details:
+	Entity Type: Zombie (net.minecraft.entity.monster.EntityZombie)
+	Entity ID: 3373975
+	Entity Name: Zombie
+	Entity's Exact location: 642,61, 3,84, 1231,78
+	Entity's Block location: World: (642,3,1231), Chunk: (at 2,0,15 in 40,76; contains blocks 640,0,1216 to 655,255,1231), Region: (1,2; contains chunks 32,64 to 63,95, blocks 512,0,1024 to 1023,255,1535)
+	Entity's Momentum: 0,04, -0,49, 0,08
+Stacktrace:
+	at net.minecraft.world.World.updateEntities(World.java:2108)
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 1 total; [EntityClientPlayerMP['Player692'/1634681, l='MpServer', x=641,68, y=5,62, z=1228,93]]
+	Chunk stats: MultiplayerChunkCache: 625, 625
+	Level seed: 0
+	Level generator: ID 01 - flat, ver 0. Features enabled: false
+	Level generator options: 
+	Level spawn location: World: (639,4,1231), Chunk: (at 15,0,15 in 39,76; contains blocks 624,0,1216 to 639,255,1231), Region: (1,2; contains chunks 32,64 to 63,95, blocks 512,0,1024 to 1023,255,1535)
+	Level time: 1029731 game time, 1000 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: false
+	Forced entities: 189 total; [EntityVillager['Villager'/1634584, l='MpServer', x=623,50, y=5,00, z=1229,66], EntityVillager['Villager'/1634585, l='MpServer', x=611,24, y=5,00, z=1230,63], EntityVillager['Villager'/1634586, l='MpServer', x=622,78, y=5,00, z=1233,06], EntityChicken['Chicken'/1634587, l='MpServer', x=624,75, y=4,00, z=1277,94], EntityPig['Pig'/1634588, l='MpServer', x=631,44, y=4,00, z=1292,19], EntityPig['Pig'/1634591, l='MpServer', x=649,56, y=4,00, z=1160,28], EntityPig['Pig'/1634576, l='MpServer', x=631,84, y=4,00, z=1171,88], EntityPig['Pig'/1634577, l='MpServer', x=625,16, y=4,00, z=1190,56], EntityPig['Pig'/1634578, l='MpServer', x=624,72, y=4,00, z=1191,84], EntitySlime['Slime'/2816800, l='MpServer', x=588,06, y=4,00, z=1185,47], EntityVillager['Villager'/1634579, l='MpServer', x=635,08, y=4,00, z=1220,18], EntityVillager['Villager'/1634580, l='MpServer', x=611,47, y=4,47, z=1243,61], EntityVillager['Villager'/1634581, l='MpServer', x=606,68, y=6,00, z=1229,40], EntityVillager['Villager'/1634583, l='MpServer', x=606,35, y=6,00, z=1230,74], EntityVillager['Villager'/1634568, l='MpServer', x=617,50, y=5,00, z=1228,00], EntitySlime['Slime'/3025720, l='MpServer', x=659,44, y=4,99, z=1178,46], EntityHorse['Horse'/1634574, l='MpServer', x=630,75, y=4,00, z=1152,44], EntityChicken['Chicken'/1634575, l='MpServer', x=638,72, y=4,00, z=1165,63], EntityVillager['Villager'/1634560, l='MpServer', x=617,31, y=5,00, z=1243,50], EntityVillager['Villager'/1634561, l='MpServer', x=601,77, y=4,00, z=1229,32], EntityVillager['Villager'/1634562, l='MpServer', x=617,66, y=5,00, z=1242,59], EntitySlime['Slime'/2997303, l='MpServer', x=690,80, y=4,35, z=1292,85], EntityVillager['Villager'/1634563, l='MpServer', x=609,47, y=5,00, z=1245,25], EntitySlime['Slime'/2489150, l='MpServer', x=667,46, y=4,47, z=1258,68], EntityVillager['Villager'/1634564, l='MpServer', x=616,63, y=5,00, z=1242,31], EntitySlime['Slime'/3048242, l='MpServer', x=662,84, y=5,08, z=1241,25], EntityVillager['Villager'/1634565, l='MpServer', x=612,13, y=4,00, z=1240,50], EntityVillager['Villager'/1634566, l='MpServer', x=611,72, y=4,00, z=1229,44], EntitySlime['Slime'/2985011, l='MpServer', x=613,47, y=5,06, z=1246,91], EntityVillager['Villager'/1634567, l='MpServer', x=610,40, y=4,00, z=1237,89], EntityChicken['Chicken'/1634616, l='MpServer', x=687,72, y=4,00, z=1186,22], EntityItem['item.item.slimeball'/3206672, l='MpServer', x=616,25, y=4,13, z=1256,19], EntityCow['Cow'/1634617, l='MpServer', x=685,28, y=4,00, z=1271,31], EntityCow['Cow'/1634618, l='MpServer', x=684,25, y=4,00, z=1280,25], EntityCow['Cow'/1634619, l='MpServer', x=682,63, y=4,00, z=1270,47], EntitySlime['Slime'/2895631, l='MpServer', x=643,67, y=4,00, z=1251,94], EntitySlime['Slime'/3243538, l='MpServer', x=714,86, y=5,08, z=1251,01], EntityPig['Pig'/1634620, l='MpServer', x=689,53, y=4,00, z=1284,94], EntityPig['Pig'/1634621, l='MpServer', x=673,19, y=4,00, z=1287,19], EntityCow['Cow'/1634622, l='MpServer', x=673,41, y=4,00, z=1301,41], EntitySlime['Slime'/3169302, l='MpServer', x=674,28, y=4,96, z=1273,41], EntitySheep['Sheep'/1634623, l='MpServer', x=692,31, y=4,00, z=1202,09], EntityPig['Pig'/1634608, l='MpServer', x=658,91, y=5,00, z=1200,66], EntityHorse['Horse'/1634609, l='MpServer', x=662,66, y=4,00, z=1239,27], EntitySlime['Slime'/2365709, l='MpServer', x=624,78, y=4,00, z=1256,00], EntityCow['Cow'/1634610, l='MpServer', x=668,06, y=4,00, z=1281,69], EntityCow['Cow'/1634611, l='MpServer', x=665,78, y=4,00, z=1285,56], EntitySlime['Slime'/2594058, l='MpServer', x=626,57, y=4,00, z=1229,22], EntitySheep['Sheep'/1634614, l='MpServer', x=676,22, y=4,00, z=1197,44], EntitySlime['Slime'/2934018, l='MpServer', x=563,15, y=4,33, z=1301,08], EntityChicken['Chicken'/1634615, l='MpServer', x=678,16, y=4,00, z=1190,03], EntitySlime['Slime'/3199007, l='MpServer', x=620,47, y=6,00, z=1265,13], EntityHorse['Horse'/1634600, l='MpServer', x=648,50, y=4,00, z=1231,63], EntityChicken['Chicken'/1634601, l='MpServer', x=637,91, y=4,00, z=1291,47], EntitySlime['Slime'/3374080, l='MpServer', x=574,64, y=5,00, z=1234,71], EntitySlime['Slime'/3077402, l='MpServer', x=702,28, y=4,00, z=1254,23], EntitySlime['Slime'/2203926, l='MpServer', x=604,69, y=5,00, z=1236,94], EntityPig['Pig'/1634607, l='MpServer', x=663,25, y=4,00, z=1155,53], EntityPig['Pig'/1634592, l='MpServer', x=653,03, y=4,00, z=1176,91], EntitySlime['Slime'/3265544, l='MpServer', x=663,76, y=4,95, z=1301,84], EntityHorse['Horse'/1634595, l='MpServer', x=646,78, y=4,00, z=1231,28], EntitySlime['Slime'/2160925, l='MpServer', x=656,25, y=4,00, z=1240,75], EntityItem['item.item.rottenFlesh'/2418021, l='MpServer', x=605,28, y=4,13, z=1217,94], EntityZombie['Zombie'/1680478, l='MpServer', x=638,78, y=4,00, z=1229,78], EntityItem['item.item.rottenFlesh'/3154810, l='MpServer', x=640,03, y=4,13, z=1242,28], EntityHorse['Horse'/1634632, l='MpServer', x=712,50, y=4,00, z=1217,22], EntityChicken['Chicken'/1634633, l='MpServer', x=714,47, y=4,00, z=1219,34], EntityItem['item.item.rottenFlesh'/3167329, l='MpServer', x=641,75, y=2,13, z=1240,91], EntityCow['Cow'/1634635, l='MpServer', x=704,88, y=4,00, z=1299,81], EntitySlime['Slime'/3343205, l='MpServer', x=688,34, y=4,69, z=1302,36], EntityZombie['Zombie'/3012730, l='MpServer', x=639,63, y=4,00, z=1243,44], EntityChicken['Chicken'/1634624, l='MpServer', x=696,19, y=4,00, z=1202,41], EntityChicken['Chicken'/1634625, l='MpServer', x=690,81, y=4,00, z=1223,03], EntityChicken['Chicken'/1634626, l='MpServer', x=691,44, y=4,00, z=1223,59], EntityPig['Pig'/1634627, l='MpServer', x=690,94, y=4,00, z=1251,38], EntitySlime['Slime'/3274090, l='MpServer', x=674,34, y=4,00, z=1291,97], EntitySheep['Sheep'/1634628, l='MpServer', x=714,84, y=4,00, z=1190,75], EntityPig['Pig'/1634629, l='MpServer', x=709,94, y=4,00, z=1214,94], EntitySheep['Sheep'/1634630, l='MpServer', x=717,50, y=4,00, z=1230,47], EntityChicken['Chicken'/1634631, l='MpServer', x=716,09, y=4,00, z=1224,34], EntitySlime['Slime'/3051599, l='MpServer', x=585,24, y=4,00, z=1247,78], EntityClientPlayerMP['Player692'/1634681, l='MpServer', x=641,68, y=5,62, z=1228,93], EntitySlime['Slime'/3179870, l='MpServer', x=688,94, y=4,00, z=1183,00], EntitySlime['Slime'/2957397, l='MpServer', x=710,69, y=4,00, z=1254,22], EntitySlime['Slime'/3316815, l='MpServer', x=566,12, y=5,35, z=1226,72], EntitySlime['Slime'/3083601, l='MpServer', x=709,08, y=4,39, z=1270,77], EntitySlime['Slime'/2375589, l='MpServer', x=694,25, y=4,33, z=1210,04], EntitySlime['Slime'/3215283, l='MpServer', x=598,92, y=4,47, z=1213,23], EntitySlime['Slime'/3242167, l='MpServer', x=575,97, y=4,00, z=1156,31], EntitySlime['Slime'/2866081, l='MpServer', x=590,39, y=4,85, z=1235,39], EntitySlime['Slime'/2202282, l='MpServer', x=626,16, y=5,00, z=1258,78], EntitySlime['Slime'/2866080, l='MpServer', x=600,72, y=4,96, z=1248,52], EntitySlime['Slime'/1824641, l='MpServer', x=618,88, y=6,00, z=1261,69], EntityVillager['Villager'/1634488, l='MpServer', x=612,44, y=4,00, z=1214,31], EntitySlime['Slime'/2606215, l='MpServer', x=637,16, y=4,00, z=1236,89], EntitySheep['Sheep'/1634489, l='MpServer', x=580,44, y=5,00, z=1229,88], EntitySlime['Slime'/1995967, l='MpServer', x=649,84, y=4,00, z=1228,16], EntityVillager['Villager'/1634490, l='MpServer', x=595,88, y=4,00, z=1235,88], EntitySlime['Slime'/2665867, l='MpServer', x=656,84, y=4,61, z=1238,75], EntityZombie['Zombie'/3373975, l='MpServer', x=642,61, y=3,84, z=1231,78], EntityPig['Pig'/1634493, l='MpServer', x=581,56, y=4,00, z=1246,81], EntityPig['Pig'/1634494, l='MpServer', x=580,63, y=4,00, z=1240,50], EntitySheep['Sheep'/1634495, l='MpServer', x=576,53, y=4,00, z=1247,31], EntitySlime['Slime'/2925451, l='MpServer', x=619,94, y=4,47, z=1166,98], EntityPig['Pig'/1634480, l='MpServer', x=586,06, y=4,00, z=1182,59], EntitySlime['Slime'/1760690, l='MpServer', x=656,25, y=4,83, z=1248,25], EntityPig['Pig'/1634481, l='MpServer', x=586,53, y=4,00, z=1205,06], EntityPig['Pig'/1634482, l='MpServer', x=585,81, y=4,00, z=1214,44], EntityChicken['Chicken'/1634483, l='MpServer', x=589,53, y=4,00, z=1199,66], EntityPig['Pig'/1634484, l='MpServer', x=586,97, y=4,00, z=1214,97], EntitySlime['Slime'/2433672, l='MpServer', x=637,17, y=4,00, z=1234,20], EntityItem['item.item.slimeball'/1634485, l='MpServer', x=581,13, y=4,13, z=1213,75], EntityVillager['Villager'/1634486, l='MpServer', x=590,41, y=4,00, z=1229,16], EntityVillager['Villager'/1634487, l='MpServer', x=591,59, y=5,00, z=1217,69], EntityItem['item.item.rottenFlesh'/3158403, l='MpServer', x=639,69, y=4,13, z=1238,53], EntityChicken['Chicken'/1634477, l='MpServer', x=579,53, y=4,00, z=1158,47], EntityHorse['Horse'/1634478, l='MpServer', x=589,66, y=4,00, z=1162,22], EntityPig['Pig'/1634479, l='MpServer', x=590,19, y=4,00, z=1182,75], EntityCow['Cow'/1634464, l='MpServer', x=566,09, y=4,00, z=1152,09], EntityPig['Pig'/1634465, l='MpServer', x=571,19, y=4,00, z=1161,56], EntitySlime['Slime'/2669970, l='MpServer', x=596,15, y=4,00, z=1233,78], EntityHorse['Horse'/1634466, l='MpServer', x=570,50, y=4,00, z=1169,97], EntitySlime['Slime'/3218060, l='MpServer', x=708,34, y=4,00, z=1231,07], EntityPig['Pig'/1634520, l='MpServer', x=595,25, y=4,00, z=1236,94], EntitySlime['Slime'/1715418, l='MpServer', x=628,69, y=4,00, z=1228,31], EntityVillager['Villager'/1634521, l='MpServer', x=606,31, y=5,00, z=1232,94], EntityVillager['Villager'/1634522, l='MpServer', x=606,31, y=5,00, z=1235,69], EntitySlime['Slime'/3270387, l='MpServer', x=704,58, y=4,95, z=1218,28], EntityVillager['Villager'/1634523, l='MpServer', x=602,69, y=4,00, z=1241,41], EntityVillager['Villager'/1634524, l='MpServer', x=601,41, y=4,00, z=1238,97], EntityVillager['Villager'/1634525, l='MpServer', x=598,38, y=4,00, z=1237,50], EntitySlime['Slime'/3358966, l='MpServer', x=690,35, y=5,06, z=1244,48], EntityVillager['Villager'/1634526, l='MpServer', x=595,41, y=4,00, z=1237,97], EntityVillager['Villager'/1634527, l='MpServer', x=604,06, y=4,00, z=1239,97], EntityPig['Pig'/1634512, l='MpServer', x=594,06, y=4,00, z=1203,16], EntityVillager['Villager'/1634513, l='MpServer', x=600,94, y=5,00, z=1230,94], EntityVillager['Villager'/1634514, l='MpServer', x=592,53, y=5,00, z=1224,94], EntityItem['item.item.slimeball'/1924055, l='MpServer', x=622,31, y=4,13, z=1257,66], EntityPig['Pig'/1634515, l='MpServer', x=597,41, y=4,00, z=1220,88], EntityVillager['Villager'/1634516, l='MpServer', x=607,04, y=6,00, z=1230,26], EntitySlime['Slime'/3287038, l='MpServer', x=575,45, y=4,37, z=1202,93], EntitySlime['Slime'/3374079, l='MpServer', x=577,27, y=4,96, z=1236,84], EntityPig['Pig'/1634517, l='MpServer', x=600,84, y=4,00, z=1224,81], EntityVillager['Villager'/1634518, l='MpServer', x=598,03, y=4,00, z=1234,13], EntityPig['Pig'/1634519, l='MpServer', x=600,16, y=4,00, z=1239,88], EntityHorse['Horse'/1634506, l='MpServer', x=599,00, y=4,00, z=1151,03], EntityCow['Cow'/1634508, l='MpServer', x=596,19, y=4,00, z=1169,56], EntityChicken['Chicken'/1634509, l='MpServer', x=604,72, y=6,00, z=1191,69], EntityItem['item.item.seeds'/3021051, l='MpServer', x=650,69, y=5,13, z=1190,47], EntityPig['Pig'/1634510, l='MpServer', x=600,41, y=4,00, z=1186,19], EntitySlime['Slime'/1956555, l='MpServer', x=641,13, y=6,00, z=1211,37], EntityPig['Pig'/1634511, l='MpServer', x=598,50, y=4,00, z=1206,44], EntityItem['item.item.wheat'/3021049, l='MpServer', x=652,69, y=4,13, z=1192,47], EntitySheep['Sheep'/1634496, l='MpServer', x=572,38, y=4,00, z=1275,44], EntityChicken['Chicken'/1634497, l='MpServer', x=586,41, y=4,00, z=1278,81], EntityPig['Pig'/1634498, l='MpServer', x=584,94, y=4,00, z=1288,41], EntitySlime['Slime'/3146478, l='MpServer', x=706,96, y=4,47, z=1187,65], EntityVillager['Villager'/1634552, l='MpServer', x=620,25, y=5,00, z=1217,44], EntityVillager['Villager'/1634553, l='MpServer', x=614,03, y=4,00, z=1234,44], EntityVillager['Villager'/1634554, l='MpServer', x=618,69, y=5,00, z=1232,31], EntitySlime['Slime'/2266304, l='MpServer', x=639,69, y=4,77, z=1197,50], EntityVillager['Villager'/1634555, l='MpServer', x=619,41, y=4,00, z=1235,56], EntityVillager['Villager'/1634556, l='MpServer', x=631,28, y=4,00, z=1216,72], EntityVillager['Villager'/1634557, l='MpServer', x=625,34, y=4,00, z=1215,66], EntityVillager['Villager'/1634558, l='MpServer', x=620,53, y=5,00, z=1232,13], EntitySlime['Slime'/3166166, l='MpServer', x=681,13, y=4,00, z=1207,66], EntityVillager['Villager'/1634559, l='MpServer', x=617,69, y=6,00, z=1248,41], EntityHorse['Horse'/1634544, l='MpServer', x=613,03, y=4,00, z=1173,22], EntitySlime['Slime'/2718401, l='MpServer', x=699,15, y=4,00, z=1197,27], EntitySlime['Slime'/2924228, l='MpServer', x=583,02, y=4,33, z=1179,64], EntityPig['Pig'/1634545, l='MpServer', x=608,47, y=4,00, z=1171,19], EntityPig['Pig'/1634546, l='MpServer', x=623,72, y=4,00, z=1197,22], EntityPig['Pig'/1634547, l='MpServer', x=604,94, y=4,00, z=1202,06], EntityVillager['Villager'/1634549, l='MpServer', x=611,34, y=4,00, z=1227,85], EntityVillager['Villager'/1634550, l='MpServer', x=617,06, y=5,95, z=1247,50], EntityVillager['Villager'/1634551, l='MpServer', x=598,00, y=4,00, z=1242,59], EntityCow['Cow'/1634538, l='MpServer', x=615,81, y=4,00, z=1151,81], EntityPig['Pig'/1634539, l='MpServer', x=611,63, y=4,00, z=1164,34], EntityHorse['Horse'/1634540, l='MpServer', x=618,03, y=4,00, z=1160,16], EntityPig['Pig'/1634541, l='MpServer', x=622,19, y=4,00, z=1159,16], EntityPig['Pig'/1634542, l='MpServer', x=616,09, y=4,00, z=1163,28], EntityHorse['Horse'/1634543, l='MpServer', x=604,41, y=4,00, z=1165,91], EntityVillager['Villager'/1634528, l='MpServer', x=610,61, y=4,00, z=1227,13], EntityPig['Pig'/1634529, l='MpServer', x=597,50, y=4,00, z=1254,81], EntityPig['Pig'/1634530, l='MpServer', x=596,66, y=4,00, z=1258,53], EntityPig['Pig'/1634531, l='MpServer', x=595,91, y=4,00, z=1272,34], EntitySlime['Slime'/3106515, l='MpServer', x=663,83, y=4,95, z=1185,20], EntityItem['item.item.egg'/3262157, l='MpServer', x=692,19, y=4,13, z=1225,22], EntitySlime['Slime'/2907601, l='MpServer', x=635,14, y=4,00, z=1233,31]]
+	Retry entities: 0 total; []
+	Server brand: fml,forge
+	Server type: Integrated singleplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:415)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2566)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:984)
+	at net.minecraft.client.main.Main.main(Main.java:164)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(Unknown Source)
+	at GradleStart.main(Unknown Source)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.7.10
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_221, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 840576112 bytes (801 MB) / 1037959168 bytes (989 MB) up to 1037959168 bytes (989 MB)
+	JVM Flags: 3 total; -Xincgc -Xmx1024M -Xms1024M
+	AABB Pool Size: 0 (0 bytes; 0 MB) allocated, 0 (0 bytes; 0 MB) used
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	FML: MCP v9.05 FML v7.10.99.99 Minecraft Forge 10.13.4.1614 4 mods loaded, 4 mods active
+	States: 'U' = Unloaded 'L' = Loaded 'C' = Constructed 'H' = Pre-initialized 'I' = Initialized 'J' = Post-initialized 'A' = Available 'D' = Disabled 'E' = Errored
+	UCHIJAAAAAAAAAAAAAA	mcp{9.05} [Minecraft Coder Pack] (minecraft.jar) 
+	UCHIJAAAAAAAAAAAAAA	FML{7.10.99.99} [Forge Mod Loader] (forgeSrc-1.7.10-10.13.4.1614-1.7.10.jar) 
+	UCHIJAAAAAAAAAAAAAA	Forge{10.13.4.1614} [Minecraft Forge] (forgeSrc-1.7.10-10.13.4.1614-1.7.10.jar) 
+	UCHIJAAAAAAAAAAAAAA	watermod{0.9 (final texture in Progress)} [watermod] (bin) 
+	GL info: ' Vendor: 'NVIDIA Corporation' Version: '4.6.0 NVIDIA 512.95' Renderer: 'NVIDIA GeForce RTX 2080 SUPER/PCIe/SSE2'
+	Launched Version: 1.7.10
+	LWJGL: 2.9.1
+	OpenGL: NVIDIA GeForce RTX 2080 SUPER/PCIe/SSE2 GL version 4.6.0 NVIDIA 512.95, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Anisotropic filtering is supported and maximum anisotropy is 16.
+Shaders are available because OpenGL 2.1 is supported.
+
+	Is Modded: Definitely; Client brand changed to 'fml,forge'
+	Type: Client (map_client.txt)
+	Resource Packs: [Conquest_.zip]
+	Current Language: English (US)
+	Profiler Position: N/A (disabled)
+	Vec3 Pool Size: 0 (0 bytes; 0 MB) allocated, 0 (0 bytes; 0 MB) used
+	Anisotropic Filtering: Off (1)

@@ -1,0 +1,44 @@
+package watersplash;
+
+import java.util.ArrayList;
+
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
+import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
+
+public class  {
+
+
+	@SubscribeEvent
+	public void updateSplashParticlesForLiving(LivingUpdateEvent event) {
+		if( event.entity.worldObj.isRemote && event.entity.worldObj.isRemote && EntityRainProperties.get((Entity) event.entity) != null) {
+			EntityRainProperties.get((Entity) event.entity).updateWaterLogic();
+		}
+	}
+	
+	@SubscribeEvent
+	public void addRainParticles(EntityConstructing event)
+   {
+		if((event.entity instanceof EntityLiving)) {
+			if(EntityRainProperties.get((Entity) event.entity) == null) {
+				if(ConfigurationMoD.Enable_Splash_for_ENTITYS && event.entity instanceof EntityLiving)
+					EntityRainProperties.register((Entity)event.entity);
+				}
+		}
+		
+		if((event.entity instanceof EntityItem)) {
+			if(EntityRainProperties.get((EntityItem) event.entity) == null) {
+				if(ConfigurationMoD.Enable_Splash_for_ITEMS && event.entity instanceof EntityItem) {
+					
+				EntityRainProperties.register((Entity)event.entity);
+				WeatherHelper.entitystemp = (ArrayList<EntityRainProperties>) WeatherHelper.entitys.clone();
+				WeatherHelper.entitystemp.add(EntityRainProperties.get((Entity)event.entity));
+					
+				}
+			}
+		}
+   } 
+}

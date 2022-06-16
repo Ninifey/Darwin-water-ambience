@@ -1,0 +1,86 @@
+---- Minecraft Crash Report ----
+// Hey, that tickles! Hehehe!
+
+Time: 13.06.22 21:00
+Description: Ticking memory connection
+
+java.lang.NullPointerException: Ticking memory connection
+	at net.minecraft.entity.player.EntityPlayer.getCommandSenderName(EntityPlayer.java:2327)
+	at net.minecraft.entity.Entity.toString(Entity.java:2333)
+	at java.lang.String.valueOf(String.java:2994)
+	at java.lang.StringBuilder.append(StringBuilder.java:131)
+	at watersplash.WeatherHelper.addRainParticles(WeatherHelper.java:68)
+	at cpw.mods.fml.common.eventhandler.ASMEventHandler_7_WeatherHelper_addRainParticles_EntityConstructing.invoke(.dynamic)
+	at cpw.mods.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:54)
+	at cpw.mods.fml.common.eventhandler.EventBus.post(EventBus.java:140)
+	at net.minecraft.entity.Entity.<init>(Entity.java:224)
+	at net.minecraft.entity.EntityLivingBase.<init>(EntityLivingBase.java:155)
+	at net.minecraft.entity.player.EntityPlayer.<init>(EntityPlayer.java:165)
+	at net.minecraft.entity.player.EntityPlayerMP.<init>(EntityPlayerMP.java:158)
+	at net.minecraft.server.management.ServerConfigurationManager.createPlayerForUser(ServerConfigurationManager.java:443)
+	at net.minecraft.server.network.NetHandlerLoginServer.func_147326_c(NetHandlerLoginServer.java:105)
+	at net.minecraft.server.network.NetHandlerLoginServer.onNetworkTick(NetHandlerLoginServer.java:64)
+	at net.minecraft.network.NetworkManager.processReceivedPackets(NetworkManager.java:244)
+	at net.minecraft.network.NetworkSystem.networkTick(NetworkSystem.java:182)
+	at net.minecraft.server.MinecraftServer.updateTimeLightAndEntities(MinecraftServer.java:726)
+	at net.minecraft.server.MinecraftServer.tick(MinecraftServer.java:614)
+	at net.minecraft.server.integrated.IntegratedServer.tick(IntegratedServer.java:118)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:485)
+	at net.minecraft.server.MinecraftServer$2.run(MinecraftServer.java:752)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at net.minecraft.entity.player.EntityPlayer.getCommandSenderName(EntityPlayer.java:2327)
+	at net.minecraft.entity.Entity.toString(Entity.java:2333)
+	at java.lang.String.valueOf(String.java:2994)
+	at java.lang.StringBuilder.append(StringBuilder.java:131)
+	at watersplash.WeatherHelper.addRainParticles(WeatherHelper.java:68)
+	at cpw.mods.fml.common.eventhandler.ASMEventHandler_7_WeatherHelper_addRainParticles_EntityConstructing.invoke(.dynamic)
+	at cpw.mods.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:54)
+	at cpw.mods.fml.common.eventhandler.EventBus.post(EventBus.java:140)
+	at net.minecraft.entity.Entity.<init>(Entity.java:224)
+	at net.minecraft.entity.EntityLivingBase.<init>(EntityLivingBase.java:155)
+	at net.minecraft.entity.player.EntityPlayer.<init>(EntityPlayer.java:165)
+	at net.minecraft.entity.player.EntityPlayerMP.<init>(EntityPlayerMP.java:158)
+	at net.minecraft.server.management.ServerConfigurationManager.createPlayerForUser(ServerConfigurationManager.java:443)
+	at net.minecraft.server.network.NetHandlerLoginServer.func_147326_c(NetHandlerLoginServer.java:105)
+	at net.minecraft.server.network.NetHandlerLoginServer.onNetworkTick(NetHandlerLoginServer.java:64)
+	at net.minecraft.network.NetworkManager.processReceivedPackets(NetworkManager.java:244)
+
+-- Ticking connection --
+Details:
+	Connection: net.minecraft.network.NetworkManager@20942a9c
+Stacktrace:
+	at net.minecraft.network.NetworkSystem.networkTick(NetworkSystem.java:182)
+	at net.minecraft.server.MinecraftServer.updateTimeLightAndEntities(MinecraftServer.java:726)
+	at net.minecraft.server.MinecraftServer.tick(MinecraftServer.java:614)
+	at net.minecraft.server.integrated.IntegratedServer.tick(IntegratedServer.java:118)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:485)
+	at net.minecraft.server.MinecraftServer$2.run(MinecraftServer.java:752)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.7.10
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_221, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 719789096 bytes (686 MB) / 1037959168 bytes (989 MB) up to 1037959168 bytes (989 MB)
+	JVM Flags: 3 total; -Xincgc -Xmx1024M -Xms1024M
+	AABB Pool Size: 0 (0 bytes; 0 MB) allocated, 0 (0 bytes; 0 MB) used
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	FML: MCP v9.05 FML v7.10.99.99 Minecraft Forge 10.13.4.1614 4 mods loaded, 4 mods active
+	States: 'U' = Unloaded 'L' = Loaded 'C' = Constructed 'H' = Pre-initialized 'I' = Initialized 'J' = Post-initialized 'A' = Available 'D' = Disabled 'E' = Errored
+	UCHIJAAAA	mcp{9.05} [Minecraft Coder Pack] (minecraft.jar) 
+	UCHIJAAAA	FML{7.10.99.99} [Forge Mod Loader] (forgeSrc-1.7.10-10.13.4.1614-1.7.10.jar) 
+	UCHIJAAAA	Forge{10.13.4.1614} [Minecraft Forge] (forgeSrc-1.7.10-10.13.4.1614-1.7.10.jar) 
+	UCHIJAAAA	watermod{0.8 (final texture in Progress)} [watermod] (bin) 
+	GL info: ~~ERROR~~ RuntimeException: No OpenGL context found in the current thread.
+	Profiler Position: N/A (disabled)
+	Vec3 Pool Size: 0 (0 bytes; 0 MB) allocated, 0 (0 bytes; 0 MB) used
+	Player Count: 0 / 8; []
+	Type: Integrated Server (map_client.txt)
+	Is Modded: Definitely; Client brand changed to 'fml,forge'

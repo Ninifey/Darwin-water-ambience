@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="net.minecraft.entity.EntityLivingBase"/>
+    <fullyQualifiedTypeName name="net.minecraft.entity.Entity"/>
+    <fullyQualifiedTypeName name="java.util.Iterator"/>
+    <fullyQualifiedTypeName name="com.ibm.icu.util.ValueIterator.Element"/>
+    <fullyQualifiedTypeName name="net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent"/>
+    <fullyQualifiedTypeName name="net.minecraft.client.renderer.texture.TextureMap"/>
+    <fullyQualifiedTypeName name="watersplash.WaterSplashTextureManager"/>
+    <fullyQualifiedTypeName name="net.minecraft.client.renderer.texture.TextureManager"/>
+    <fullyQualifiedTypeName name="java.awt.Image"/>
+    <fullyQualifiedTypeName name="javax.swing.ImageIcon"/>
+    <fullyQualifiedTypeName name="javax.swing.Icon"/>
+    <fullyQualifiedTypeName name="java.awt.GraphicsEnvironment"/>
+    <fullyQualifiedTypeName name="java.awt.GraphicsDevice"/>
+    <fullyQualifiedTypeName name="java.awt.GraphicsConfiguration"/>
+    <fullyQualifiedTypeName name="java.awt.image.BufferedImage"/>
+    <fullyQualifiedTypeName name="java.awt.Graphics2D"/>
+    <fullyQualifiedTypeName name="watersplash.TextureRegister"/>
+    <fullyQualifiedTypeName name="net.minecraft.block.BlockStaticLiquid"/>
+    <fullyQualifiedTypeName name="java.io.File"/>
+    <fullyQualifiedTypeName name="javax.imageio.ImageIO"/>
+    <fullyQualifiedTypeName name="java.io.IOException"/>
+    <fullyQualifiedTypeName name="net.minecraft.client.renderer.texture.TextureAtlasSprite"/>
+    <fullyQualifiedTypeName name="net.minecraft.init.Blocks"/>
+    <fullyQualifiedTypeName name="net.minecraft.client.shader.Framebuffer"/>
+    <fullyQualifiedTypeName name="net.minecraft.block.Block"/>
+    <fullyQualifiedTypeName name="java.awt.image.WritableRaster"/>
+    <fullyQualifiedTypeName name="java.awt.image.DataBufferInt"/>
+    <fullyQualifiedTypeName name="java.awt.Color"/>
+    <fullyQualifiedTypeName name="org.lwjgl.opengl.GL11"/>
+    <fullyQualifiedTypeName name="net.minecraft.util.Vec3"/>
+    <fullyQualifiedTypeName name="java.awt.geom.Point2D"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="net.minecraft.block.material.Material"/>
+    <fullyQualifiedTypeName name="watersplash.ConfigurationMoD"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="net.minecraft.util.AxisAlignedBB"/>
+    <fullyQualifiedTypeName name="net.minecraft.entity.item.EntityItem"/>
+</qualifiedTypeNameHistroy>

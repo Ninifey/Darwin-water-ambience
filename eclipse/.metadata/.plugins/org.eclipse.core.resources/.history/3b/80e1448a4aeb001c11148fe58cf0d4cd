@@ -1,0 +1,57 @@
+package watersplash;
+
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.SidedProxy;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.config.Configuration;
+
+@Mod(modid = WATERMAIN.MODID, version = WATERMAIN.VERSION)
+public class WATERMAIN
+{
+    public static final String MODID = "watermod";
+	public static final String name = "watermod";
+    public static final String VERSION = "0.8 (final texture in Progress)";
+
+	public static WATERMAIN instance;
+
+	public static Configuration config;
+	
+	public WATERMAIN() {
+		instance = this;
+	}
+	
+	@SidedProxy
+	(
+	clientSide = "watersplash.BasisClientProxy", 
+	serverSide = "watersplash.BasisCommonProxy"
+	)
+	
+	public static BasisCommonProxy proxy;
+	public static BasisClientProxy proxyclient;
+	
+	@EventHandler
+	public void preInit(FMLPreInitializationEvent preEvent){
+		config = new Configuration(preEvent.getSuggestedConfigurationFile());
+		ConfigurationMoD.loadConfig();
+	}
+
+    @EventHandler
+    public void init(FMLInitializationEvent event){
+    	proxy.registerEvents();
+    	WeatherHelper weatherevent = new WeatherHelper();
+        MinecraftForge.EVENT_BUS.register(weatherevent);
+		FMLCommonHandler.instance().bus().register(weatherevent);
+    }
+
+    
+    @EventHandler
+	public void postInit(FMLPostInitializationEvent postEvent){
+    }
+
+}
+	

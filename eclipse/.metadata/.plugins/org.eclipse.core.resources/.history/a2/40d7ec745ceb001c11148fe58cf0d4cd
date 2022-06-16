@@ -1,0 +1,10 @@
+package watersplash;
+
+public class BasisCommonProxy {
+
+	public void registerEvents() {
+
+		
+	}
+	
+}
